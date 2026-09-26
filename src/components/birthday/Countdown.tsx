@@ -19,7 +19,7 @@ function diff(target: number) {
   };
 }
 
-export function Countdown() {
+export function useCountdown() {
   const [target] = useState(() => nextTarget().getTime());
   const [time, setTime] = useState(() => ({
     days: 0,
@@ -37,6 +37,16 @@ export function Countdown() {
     return () => clearInterval(id);
   }, [target]);
 
+  return { ...time, mounted };
+}
+
+export function Countdown({
+  time: timeProp,
+}: {
+  time?: ReturnType<typeof useCountdown> | undefined;
+}) {
+  const fallback = useCountdown();
+  const time = timeProp ?? fallback;
   const cells = [
     { label: "Days", value: time.days },
     { label: "Hours", value: time.hours },
@@ -59,7 +69,7 @@ export function Countdown() {
             className="glass-panel rounded-3xl px-4 py-5 text-center"
           >
             <div className="text-3xl font-semibold tracking-tight tabular-nums sm:text-4xl">
-              {mounted ? String(cell.value).padStart(2, "0") : "--"}
+              {time.mounted ? String(cell.value).padStart(2, "0") : "--"}
             </div>
             <div className="mt-1 text-[0.65rem] tracking-[0.2em] text-muted-foreground uppercase">
               {cell.label}

@@ -14,7 +14,7 @@ export function FlipCard({
   const [flipped, setFlipped] = useState(false);
 
   return (
-    <div className="flip-scene h-72 w-full">
+    <div className="flip-scene h-80 w-full">
       <motion.button
         type="button"
         onClick={() => setFlipped((v) => !v)}
@@ -39,7 +39,7 @@ export function FlipCard({
           className="flip-face glass-panel absolute inset-0 flex items-center rounded-3xl p-7"
           style={{ transform: "rotateY(180deg)" }}
         >
-          <p className="text-[0.95rem] leading-relaxed text-muted-foreground">{back}</p>
+          <p className="text-[0.85rem] leading-[1.75] text-muted-foreground">{back}</p>
         </div>
       </motion.button>
     </div>
