@@ -41,10 +41,12 @@ export function useCountdown() {
 }
 
 export function Countdown({
-  time,
+  time: timeProp,
 }: {
-  time: ReturnType<typeof useCountdown>;
+  time?: ReturnType<typeof useCountdown> | undefined;
 }) {
+  const fallback = useCountdown();
+  const time = timeProp ?? fallback;
   const cells = [
     { label: "Days", value: time.days },
     { label: "Hours", value: time.hours },
