@@ -114,7 +114,7 @@ function Index() {
       <nav className="fixed bottom-6 left-1/2 z-20 w-[min(94vw,32rem)] -translate-x-1/2">
         <motion.div
           key={shake}
-          animate={shake ? { x: [0, -7, 7, -4, 0] } : undefined}
+          animate={{ x: shake ? [0, -7, 7, -4, 0] : 0 }}
           transition={{ duration: 0.4 }}
           className="glass-panel flex items-center justify-between gap-1 rounded-full p-1.5"
         >
