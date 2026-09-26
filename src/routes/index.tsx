@@ -130,7 +130,7 @@ function Index() {
                 whileTap={{ scale: 0.94 }}
                 className="relative flex min-w-0 flex-1 items-center justify-center gap-2 rounded-full px-2 py-2.5 focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
                 aria-current={active ? "page" : undefined}
-                aria-disabled={isLocked}
+                data-locked={isLocked || undefined}
               >
                 {active && (
                   <motion.span
